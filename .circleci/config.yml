@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: debian:latest
+    working_directory: /root/wd
+    steps:
+      - checkout
+      - run:
+          command: |
+            echo $$
+      - run:
+          command: |
+            echo $$
