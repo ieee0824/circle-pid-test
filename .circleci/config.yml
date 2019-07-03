@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  debian:
     docker:
       - image: debian:latest
     working_directory: /root/wd
@@ -8,7 +8,18 @@ jobs:
       - checkout
       - run:
           command: |
-            echo $$
+            echo $CIRCLE_SHA1
+  go:
+    docker:
+      - image: golang:latest
+    working_directory: /root/wd
+    steps:
+      - checkout
       - run:
           command: |
-            echo $$
+            echo $CIRCLE_SHA1
+workflows:
+  version: 2
+    jobs:
+      - debian
+      - go
